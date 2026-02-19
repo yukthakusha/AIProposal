@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { API_URL } from '../config'
 
 function Dashboard() {
   const [opportunities, setOpportunities] = useState([])
@@ -14,7 +15,7 @@ function Dashboard() {
 
   const fetchOpportunities = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/opportunities', {
+      const response = await fetch(`${API_URL}/api/opportunities`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -33,7 +34,7 @@ function Dashboard() {
     setShowGenerating(true)
     
     try {
-      const response = await fetch('http://localhost:5000/api/generate-proposal', {
+      const response = await fetch(`${API_URL}/api/generate-proposal`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

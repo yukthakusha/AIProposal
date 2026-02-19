@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { API_URL } from '../config'
 
 function Profile() {
   const [profile, setProfile] = useState({
@@ -16,7 +17,7 @@ function Profile() {
 
   const fetchProfile = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/profile', {
+      const response = await fetch(`${API_URL}/api/profile`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -41,7 +42,7 @@ function Profile() {
     setSuccess(false)
 
     try {
-      const response = await fetch('http://localhost:5000/api/save-profile', {
+      const response = await fetch(`${API_URL}/api/save-profile`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

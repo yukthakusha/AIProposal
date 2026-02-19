@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import jsPDF from 'jspdf'
+import { API_URL } from '../config'
 
 function ProposalReview() {
   const { id } = useParams()
@@ -15,7 +16,7 @@ function ProposalReview() {
 
   const fetchProposal = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/proposal/${id}`, {
+      const response = await fetch(`${API_URL}/api/proposal/${id}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
